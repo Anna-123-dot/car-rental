@@ -17,13 +17,13 @@ public class PresentRentals {
     @GenericGenerator(name = "rentalSeq", strategy = "increment")
     private int id;
 
-    @Column
+    @Column(name = "rental_date")
     private LocalDateTime rentalDate;
 
-    @Column
+    @Column(name = "planned_return_date")
     private LocalDateTime plannedReturnDate;
 
-    @Column
+    @Column(name = "return_date")
     private LocalDateTime returnDate;
 
     @ManyToOne(targetEntity = Car.class)
