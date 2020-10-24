@@ -29,6 +29,8 @@ public class Car {
     @Column
     private boolean isDamaged;
 
+
+
     public Car() {
     }
 
