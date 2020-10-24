@@ -3,6 +3,7 @@ package model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 
@@ -17,13 +18,13 @@ public class PresentRentals {
     private int id;
 
     @Column
-    private String rentalDate;
+    private LocalDateTime rentalDate;
 
     @Column
-    private String plannedReturnDate;
+    private LocalDateTime plannedReturnDate;
 
     @Column
-    private String returnDate;
+    private LocalDateTime returnDate;
 
     @ManyToOne(targetEntity = Car.class)
     private Car car;
@@ -34,7 +35,7 @@ public class PresentRentals {
     public PresentRentals() {
     }
 
-    public PresentRentals(String rentalDate, String plannedReturnDate, String returnDate, Car car, Customer customer) {
+    public PresentRentals(LocalDateTime rentalDate, LocalDateTime plannedReturnDate, LocalDateTime returnDate, Car car, Customer customer) {
         this.rentalDate = rentalDate;
         this.plannedReturnDate = plannedReturnDate;
         this.returnDate = returnDate;
@@ -50,27 +51,27 @@ public class PresentRentals {
         this.id = id;
     }
 
-    public String getRentalDate() {
+    public LocalDateTime getRentalDate() {
         return rentalDate;
     }
 
-    public void setRentalDate(String rentalDate) {
+    public void setRentalDate(LocalDateTime rentalDate) {
         this.rentalDate = rentalDate;
     }
 
-    public String getPlannedReturnDate() {
+    public LocalDateTime getPlannedReturnDate() {
         return plannedReturnDate;
     }
 
-    public void setPlannedReturnDate(String plannedReturnDate) {
+    public void setPlannedReturnDate(LocalDateTime plannedReturnDate) {
         this.plannedReturnDate = plannedReturnDate;
     }
 
-    public String getReturnDate() {
+    public LocalDateTime getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(String returnDate) {
+    public void setReturnDate(LocalDateTime returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -112,12 +113,11 @@ public class PresentRentals {
     public String toString() {
         return "PresentRentals{" +
                 "id=" + id +
-                ", rentalDate='" + rentalDate + '\'' +
-                ", plannedReturnDate='" + plannedReturnDate + '\'' +
-                ", returnDate='" + returnDate + '\'' +
+                ", rentalDate=" + rentalDate +
+                ", plannedReturnDate=" + plannedReturnDate +
+                ", returnDate=" + returnDate +
                 ", car=" + car +
                 ", customer=" + customer +
                 '}';
     }
 }
-
