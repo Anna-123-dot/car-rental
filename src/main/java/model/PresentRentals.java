@@ -22,6 +22,9 @@ public class PresentRentals {
     @Column
     private String plannedReturnDate;
 
+    @Column
+    private String returnDate;
+
     @ManyToOne(targetEntity = Car.class)
     private Car car;
 
@@ -31,9 +34,10 @@ public class PresentRentals {
     public PresentRentals() {
     }
 
-    public PresentRentals(String rentalDate, String plannedReturnDate, Car car, Customer customer) {
+    public PresentRentals(String rentalDate, String plannedReturnDate, String returnDate, Car car, Customer customer) {
         this.rentalDate = rentalDate;
         this.plannedReturnDate = plannedReturnDate;
+        this.returnDate = returnDate;
         this.car = car;
         this.customer = customer;
     }
@@ -62,6 +66,14 @@ public class PresentRentals {
         this.plannedReturnDate = plannedReturnDate;
     }
 
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+
     public Car getCar() {
         return car;
     }
@@ -86,13 +98,14 @@ public class PresentRentals {
         return id == that.id &&
                 Objects.equals(rentalDate, that.rentalDate) &&
                 Objects.equals(plannedReturnDate, that.plannedReturnDate) &&
+                Objects.equals(returnDate, that.returnDate) &&
                 Objects.equals(car, that.car) &&
                 Objects.equals(customer, that.customer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, rentalDate, plannedReturnDate, car, customer);
+        return Objects.hash(id, rentalDate, plannedReturnDate, returnDate, car, customer);
     }
 
     @Override
@@ -101,8 +114,10 @@ public class PresentRentals {
                 "id=" + id +
                 ", rentalDate='" + rentalDate + '\'' +
                 ", plannedReturnDate='" + plannedReturnDate + '\'' +
+                ", returnDate='" + returnDate + '\'' +
                 ", car=" + car +
                 ", customer=" + customer +
                 '}';
     }
 }
+
