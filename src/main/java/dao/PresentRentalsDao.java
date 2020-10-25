@@ -14,7 +14,7 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
     }
     public List<PresentRentals> lateReturn (LocalDateTime plannedReturnDate, LocalDateTime returnDate) {
         Session session = SessionProvider.getSession();
-        List<PresentRentals> records = session.createQuery("select from PresentRentals where returnDate-plannedReturnDate>0", PresentRentals.class)
+        List<PresentRentals> records = session.createQuery("select r.plannedReturnDate, r.returnDate from PresentRentals as r", PresentRentals.class)
                 .list();
         session.close();
         return records;
