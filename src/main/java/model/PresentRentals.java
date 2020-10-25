@@ -43,6 +43,7 @@ public class PresentRentals {
         this.customer = customer;
     }
 
+
     public int getId() {
         return id;
     }

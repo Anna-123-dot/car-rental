@@ -5,6 +5,10 @@ import model.Car;
 import model.Customer;
 import model.PresentRentals;
 
+
+import java.time.LocalDateTime;
+
+
 public class App {
     public static void main(String[] args) {
         CarDao carDao = new CarDao();
@@ -30,6 +34,15 @@ public class App {
         //customerDao.add(customer3);
         //customerDao.add(customer4);
         //customerDao.add(customer5);
+        PresentRentals presentRentals1= new PresentRentals(LocalDateTime.of(2020,10,10,10,0,0),
+                LocalDateTime.of(2020,10,12,10,0,0),LocalDateTime.of(2020,10,14,14,15,0),carDao.findById(1), customerDao.findById(3));
+        PresentRentals presentRentals2= new PresentRentals(LocalDateTime.of(2020,10,20,10,0,0),
+                LocalDateTime.of(2020,10,30,12,0,0),LocalDateTime.of(2020,10,30,11,0,0), carDao.findById(2), customerDao.findById(2));
+        PresentRentals presentRentals3= new PresentRentals(LocalDateTime.of(2020,10,30,8,0,0),
+                LocalDateTime.of(2020,11,3,23,0,0),LocalDateTime.of(2020,11,2,23,59,0), carDao.findById(5), customerDao.findById(1));
+        presentRentalsDao.add(presentRentals1);
+        presentRentalsDao.add(presentRentals2);
+        presentRentalsDao.add(presentRentals3);
 
     }
 }
