@@ -9,9 +9,9 @@ import java.util.Objects;
 @Table(name = "customer")
 public class Customer {
     @Id
-    @Column(name="id")
-    @GeneratedValue(generator="customerSeq")
-    @GenericGenerator(name="customerSeq",strategy = "increment")
+    @Column(name = "id")
+    @GeneratedValue(generator = "customerSeq")
+    @GenericGenerator(name = "customerSeq", strategy = "increment")
     private int id;
 
     @Column

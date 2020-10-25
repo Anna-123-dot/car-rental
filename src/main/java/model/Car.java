@@ -30,7 +30,6 @@ public class Car {
     private boolean isDamaged;
 
 
-
     public Car() {
     }
 
