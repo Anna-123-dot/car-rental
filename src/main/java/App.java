@@ -40,12 +40,14 @@ public class App {
                 LocalDateTime.of(2020, 10, 30, 12, 0, 0), LocalDateTime.of(2020, 10, 30, 11, 0, 0), carDao.findById(2), customerDao.findById(2));
         PresentRentals presentRentals3 = new PresentRentals(LocalDateTime.of(2020, 10, 30, 8, 0, 0),
                 LocalDateTime.of(2020, 11, 3, 23, 0, 0), LocalDateTime.of(2020, 11, 2, 23, 59, 0), carDao.findById(5), customerDao.findById(1));
-        PresentRentals presentRentals4 = new PresentRentals(LocalDateTime.of(2020,11,2,9,20,0),LocalDateTime.of(2020,11,3,22,0,0),
-                LocalDateTime.of(2020,11,25,15,0,0),carDao.findById(3),customerDao.findById(5));
+        PresentRentals presentRentals4 = new PresentRentals(LocalDateTime.of(2020, 11, 2, 9, 20, 0), LocalDateTime.of(2020, 11, 3, 22, 0, 0),
+                LocalDateTime.of(2020, 11, 25, 15, 0, 0), carDao.findById(3), customerDao.findById(5));
         //presentRentalsDao.add(presentRentals1);
         //presentRentalsDao.add(presentRentals2);
         //presentRentalsDao.add(presentRentals3);
         //presentRentalsDao.add(presentRentals4);
+        //presentRentalsDao.remove(presentRentalsDao.findById(6));
+        //presentRentalsDao.update(presentRentalsDao.findById(5));
         System.out.println(presentRentalsDao.lateReturn());
 
 

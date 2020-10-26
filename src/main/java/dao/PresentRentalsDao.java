@@ -20,10 +20,16 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
                 .list();
         List<PresentRentals> records = list.stream()
                 .filter(columns -> {
+                    int id = Integer.parseInt(columns[0].toString());
                     LocalDateTime plannedReturnDate = LocalDateTime.parse(columns[1].toString());
                     LocalDateTime returnDate = LocalDateTime.parse(columns[2].toString());
                     int result = returnDate.compareTo(plannedReturnDate);
-                    return result > 0;
+
+                    if (result > 0) {
+                        System.out.println("Wynajem nr: "+id +" ,ilość dni o ile przekroczono okresu wynajmu= " +result);
+                        System.out.println("Będzie naliczona dodatkowa opłata za przekroczenie terminu zwrotu samochodu 80 PLN/dzień, czyli  "+result*80 +" PLN");
+                    }
+                    return result>0;
                 })
                 .map(columns -> {
                     int id = Integer.parseInt(columns[0].toString());
