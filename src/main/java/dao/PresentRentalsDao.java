@@ -28,6 +28,10 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
                     if (result > 0) {
                         System.out.println("Wynajem nr: "+id +" ,ilość dni o ile przekroczono okresu wynajmu= " +result);
                         System.out.println("Będzie naliczona dodatkowa opłata za przekroczenie terminu zwrotu samochodu 80 PLN/dzień, czyli  "+result*80 +" PLN");
+                    } else if (result == 0) {
+                        System.out.println("Wynajem nr: "+id +". Dziękujemy za terminowy zwrot samochodu");
+                    } else {
+                        System.out.println("Wynajem nr: "+id +". Dziękujemy za zwrot samochodu przed czasem");
                     }
                     return result>0;
                 })
