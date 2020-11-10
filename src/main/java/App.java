@@ -53,8 +53,9 @@ public class App {
         //carDao.findAll().forEach(car -> System.out.println(car.toString()));
         //customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
         //presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
-        carDao.updateInformationAboutDamages(5,true);
-        carDao.findAll().forEach(car -> System.out.println(car.toString()));
-
+        //carDao.updateInformationAboutDamages(5,true);
+        //carDao.findAll().forEach(car -> System.out.println(car.toString()));
+        presentRentalsDao.updatePlannedReturnDate(1,LocalDateTime.of(2020,10,18,9,0,0));
+        presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
     }
 }

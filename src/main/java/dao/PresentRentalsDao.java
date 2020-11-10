@@ -3,7 +3,9 @@ package dao;
 import database.SessionProvider;
 import model.Car;
 import model.PresentRentals;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -50,6 +52,25 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
         List<PresentRentals> presentRentalsList = session.createQuery("from PresentRentals",PresentRentals.class).list();
         session.close();
         return presentRentalsList;
+    }
+    public void updatePlannedReturnDate(int id, LocalDateTime plannedReturnDate) {
+        Session session = SessionProvider.getSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            PresentRentals presentRental = session.get(PresentRentals.class, id);
+            presentRental.setPlannedReturnDate(plannedReturnDate);
+            session.update(presentRental);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+
+            session.close();
+
+        }
     }
 
 
