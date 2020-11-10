@@ -47,9 +47,14 @@ public class App {
         //presentRentalsDao.add(presentRentals3);
         //presentRentalsDao.add(presentRentals4);
         //presentRentalsDao.remove(presentRentalsDao.findById(6));
-        //presentRentalsDao.update(presentRentalsDao.findById(5));
-        System.out.println(presentRentalsDao.lateReturn());
 
+
+        //System.out.println(presentRentalsDao.lateReturn());
+        //carDao.findAll().forEach(car -> System.out.println(car.toString()));
+        //customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
+        //presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
+        carDao.updateInformationAboutDamages(5,true);
+        carDao.findAll().forEach(car -> System.out.println(car.toString()));
 
     }
 }

@@ -85,8 +85,9 @@ public class Car {
         return isDamaged;
     }
 
-    public void setDamaged(boolean damaged) {
+    public Car setDamaged(boolean damaged) {
         isDamaged = damaged;
+        return null;
     }
 
     @Override

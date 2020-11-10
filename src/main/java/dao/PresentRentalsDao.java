@@ -1,6 +1,7 @@
 package dao;
 
 import database.SessionProvider;
+import model.Car;
 import model.PresentRentals;
 import org.hibernate.Session;
 
@@ -42,6 +43,13 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
                 .collect(Collectors.toList());
         session.close();
         return records;
+    }
+
+    public List<PresentRentals> findAll() {
+        Session session = SessionProvider.getSession();
+        List<PresentRentals> presentRentalsList = session.createQuery("from PresentRentals",PresentRentals.class).list();
+        session.close();
+        return presentRentalsList;
     }
 
 
