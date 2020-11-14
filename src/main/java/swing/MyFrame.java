@@ -2,26 +2,34 @@ package swing;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class MyFrame extends JFrame {
 
+
     public MyFrame() throws HeadlessException {
         super("Car rental- Welcome");
+        setLocation(400, 400);
+        setSize(300, 300);
+
 
         JPanel carImage = new CarImage();
         add(carImage);
-        pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         setLocation(400, 400);
         setSize(300, 300);
         setLayout(new FlowLayout());
 
-        add(new JButton("Button no 1"));
-        add(new JButton("Button no 2"));
-        add(new JButton("Button no 3"));
+        ButtonPanel buttons = new ButtonPanel();
+        add(buttons);
 
 
+        pack();
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
 }
+
