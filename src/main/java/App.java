@@ -7,6 +7,7 @@ import model.PresentRentals;
 
 
 import java.time.LocalDateTime;
+import java.util.TimeZone;
 
 
 public class App {
@@ -14,6 +15,7 @@ public class App {
         CarDao carDao = new CarDao();
         CustomerDao customerDao = new CustomerDao();
         PresentRentalsDao presentRentalsDao = new PresentRentalsDao();
+
         Car car1 = new Car("Toyota", "Yaris", "grey", "GD12345", false);
         Car car2 = new Car("Ford", "Fiesta", "red", "GD12346", false);
         Car car3 = new Car("Ford", "Focus", "black", "GD12347", false);
@@ -48,14 +50,23 @@ public class App {
         //presentRentalsDao.add(presentRentals4);
         //presentRentalsDao.remove(presentRentalsDao.findById(6));
 
+        //PresentRentals presentRentalsToBeChange = presentRentalsDao.findById(4);
+        //presentRentalsToBeChange.setPlannedReturnDate(LocalDateTime.of(2020,12,15,18,0,0));
+        //presentRentalsDao.update(presentRentalsToBeChange);
+        //System.out.println(presentRentalsToBeChange);
+
+        Car carToBeModified = carDao.findById(5);
+        carToBeModified.setDamaged(false);
+        carDao.update(carToBeModified);
+        System.out.println(carToBeModified);
 
         //System.out.println(presentRentalsDao.lateReturn());
         //carDao.findAll().forEach(car -> System.out.println(car.toString()));
         //customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
         //presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
-        //carDao.updateInformationAboutDamages(5,true);
+
         //carDao.findAll().forEach(car -> System.out.println(car.toString()));
-        presentRentalsDao.updatePlannedReturnDate(1,LocalDateTime.of(2020,10,18,9,0,0));
-        presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
+
+        //presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
     }
 }

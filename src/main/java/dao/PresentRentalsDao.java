@@ -29,14 +29,14 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
                     int result = returnDate.compareTo(plannedReturnDate);
 
                     if (result > 0) {
-                        System.out.println("Wynajem nr: "+id +" ,ilość dni o ile przekroczono okresu wynajmu= " +result);
-                        System.out.println("Będzie naliczona dodatkowa opłata za przekroczenie terminu zwrotu samochodu 80 PLN/dzień, czyli  "+result*80 +" PLN");
+                        System.out.println("Wynajem nr: " + id + " ,ilość dni o ile przekroczono okresu wynajmu= " + result);
+                        System.out.println("Będzie naliczona dodatkowa opłata za przekroczenie terminu zwrotu samochodu 80 PLN/dzień, czyli  " + result * 80 + " PLN");
                     } else if (result == 0) {
-                        System.out.println("Wynajem nr: "+id +". Dziękujemy za terminowy zwrot samochodu");
+                        System.out.println("Wynajem nr: " + id + ". Dziękujemy za terminowy zwrot samochodu");
                     } else {
-                        System.out.println("Wynajem nr: "+id +". Dziękujemy za zwrot samochodu przed czasem");
+                        System.out.println("Wynajem nr: " + id + ". Dziękujemy za zwrot samochodu przed czasem");
                     }
-                    return result>0;
+                    return result > 0;
                 })
                 .map(columns -> {
                     int id = Integer.parseInt(columns[0].toString());
@@ -49,28 +49,9 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
 
     public List<PresentRentals> findAll() {
         Session session = SessionProvider.getSession();
-        List<PresentRentals> presentRentalsList = session.createQuery("from PresentRentals",PresentRentals.class).list();
+        List<PresentRentals> presentRentalsList = session.createQuery("from PresentRentals", PresentRentals.class).list();
         session.close();
         return presentRentalsList;
-    }
-    public void updatePlannedReturnDate(int id, LocalDateTime plannedReturnDate) {
-        Session session = SessionProvider.getSession();
-        Transaction tx = null;
-
-        try {
-            tx = session.beginTransaction();
-            PresentRentals presentRental = session.get(PresentRentals.class, id);
-            presentRental.setPlannedReturnDate(plannedReturnDate);
-            session.update(presentRental);
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-
-            session.close();
-
-        }
     }
 
 

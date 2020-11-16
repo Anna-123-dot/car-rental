@@ -16,25 +16,7 @@ public class CarDao extends AbstractDao<Car> {
         super(Car.class);
     }
 
-    public void updateInformationAboutDamages(int id, boolean isDamaged) {
-        Session session = SessionProvider.getSession();
-        Transaction tx = null;
 
-        try {
-            tx = session.beginTransaction();
-            Car car = session.get(Car.class, id);
-            car.setDamaged(isDamaged);
-            session.update(car);
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-
-            session.close();
-
-        }
-    }
 
     public List<Car> findAll() {
         Session session = SessionProvider.getSession();

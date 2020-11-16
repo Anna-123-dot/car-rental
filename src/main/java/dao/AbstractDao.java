@@ -27,6 +27,14 @@ public abstract class AbstractDao<T> {
         session.close();
     }
 
+    public void update(T record) {
+        Session session = SessionProvider.getSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(record);
+        transaction.commit();
+        session.close();
+    }
+
 
     public T findById(int id) {
         Session session = SessionProvider.getSession();
