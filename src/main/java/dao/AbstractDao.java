@@ -22,6 +22,7 @@ public abstract class AbstractDao<T> {
     public void remove(T record) {
         Session session = SessionProvider.getSession();
         Transaction transaction = session.beginTransaction();
+
         session.remove(record);
         transaction.commit();
         session.close();
@@ -39,6 +40,7 @@ public abstract class AbstractDao<T> {
     public T findById(int id) {
         Session session = SessionProvider.getSession();
         T record = session.find(clazz, id);
+
         session.close();
         return record;
     }
