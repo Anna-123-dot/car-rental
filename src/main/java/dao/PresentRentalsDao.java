@@ -47,12 +47,5 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
         return records;
     }
 
-    public List<PresentRentals> findAll() {
-        Session session = SessionProvider.getSession();
-        List<PresentRentals> presentRentalsList = session.createQuery("from PresentRentals", PresentRentals.class).list();
-        session.close();
-        return presentRentalsList;
-    }
-
 
 }

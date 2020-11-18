@@ -13,10 +13,6 @@ public class CustomerDao extends AbstractDao<Customer> {
         super(Customer.class);
     }
 
-    public List<Customer> findAll() {
-        Session session = SessionProvider.getSession();
-        List<Customer> customerList = session.createQuery("from Customer",Customer.class).list();
-        session.close();
-        return customerList;
-    }
+
+
 }

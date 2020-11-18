@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         ImageIcon image = new ImageIcon("caricon.png");
-
         JLabel label = new JLabel();
         JFrame frame = new JFrame();
 
@@ -28,7 +27,7 @@ public class Main {
         label.setVerticalTextPosition(JLabel.TOP);
         label.setForeground(new Color(0, 0, 139));
         label.setFont(new Font("MV Boli", Font.PLAIN, 20));
-        label.setIconTextGap(0);
+        label.setIconTextGap(50);
         label.setBackground(new Color(245, 245, 245));
         label.setBounds(100, 100, 250, 250);
 

@@ -7,23 +7,24 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 
 public class CarDao extends AbstractDao<Car> {
 
+
     public CarDao() {
         super(Car.class);
+
     }
 
 
 
-    public List<Car> findAll() {
-        Session session = SessionProvider.getSession();
-        List<Car> carList = session.createQuery("from Car", Car.class).list();
-        session.close();
-        return carList;
-    }
 }
+
 
 

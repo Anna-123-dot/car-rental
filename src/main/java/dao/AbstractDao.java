@@ -1,8 +1,11 @@
 package dao;
 
 import database.SessionProvider;
+import model.Car;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 public abstract class AbstractDao<T> {
     private final Class<T> clazz;
@@ -22,7 +25,6 @@ public abstract class AbstractDao<T> {
     public void remove(T record) {
         Session session = SessionProvider.getSession();
         Transaction transaction = session.beginTransaction();
-
         session.remove(record);
         transaction.commit();
         session.close();
@@ -40,9 +42,15 @@ public abstract class AbstractDao<T> {
     public T findById(int id) {
         Session session = SessionProvider.getSession();
         T record = session.find(clazz, id);
-
         session.close();
         return record;
+    }
+
+    public List<T> findAll() {
+        Session session = SessionProvider.getSession();
+        List<T> records = session.createQuery("from " + clazz.getCanonicalName(), clazz).list();
+        session.close();
+        return records;
     }
 
 
