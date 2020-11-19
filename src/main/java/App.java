@@ -88,7 +88,7 @@ public class App {
         //System.out.println(presentRentalsDao.lateReturn());
 
         //Showing all cars, customers and present rentals
-        carDao.findAll().forEach(car -> System.out.println(car.toString()));
+        //carDao.findAll().forEach(car -> System.out.println(car.toString()));
         //customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
         //presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
 
