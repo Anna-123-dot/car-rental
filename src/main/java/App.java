@@ -27,12 +27,12 @@ public class App {
         Car car6 = new Car("Opel", "Insignia", "black", "GD12350", false);
 
         //Adding new car
-        //carDao.add(car1);
-        //carDao.add(car2);
-        //carDao.add(car3);
-        //carDao.add(car4);
-        //carDao.add(car5);
-        //carDao.add(car6);
+//        carDao.add(car1);
+//        carDao.add(car2);
+//        carDao.add(car3);
+//        carDao.add(car4);
+//        carDao.add(car5);
+//        carDao.add(car6);
 
         //Removing car
         //Car carToBeRemoved = carDao.findById(4);
@@ -46,12 +46,12 @@ public class App {
         Customer customer6 = new Customer("Wojciech", "Piepiórka");
 
         //Adding customer
-        //customerDao.add(customer1);
-        //customerDao.add(customer2);
-        //customerDao.add(customer3);
-        //customerDao.add(customer4);
-        //customerDao.add(customer5);
-        //customerDao.add(customer6);
+//        customerDao.add(customer1);
+//        customerDao.add(customer2);
+//        customerDao.add(customer3);
+//        customerDao.add(customer4);
+//        customerDao.add(customer5);
+//        customerDao.add(customer6);
 
         //Removing customer
         //Customer customerToBeRemoved = customerDao.findById(1);
@@ -66,34 +66,34 @@ public class App {
         PresentRentals presentRentals4 = new PresentRentals(LocalDateTime.of(2020, 11, 2, 9, 20, 0), LocalDateTime.of(2020, 11, 3, 22, 0, 0),
                 LocalDateTime.of(2020, 11, 25, 15, 0, 0), carDao.findById(3), customerDao.findById(5));
 
-       //Adding new rental agreement
-        //presentRentalsDao.add(presentRentals1);
-        //presentRentalsDao.add(presentRentals2);
-        //presentRentalsDao.add(presentRentals3);
-        //presentRentalsDao.add(presentRentals4);
+        //Adding new rental agreement
+//        presentRentalsDao.add(presentRentals1);
+//        presentRentalsDao.add(presentRentals2);
+//        presentRentalsDao.add(presentRentals3);
+//        presentRentalsDao.add(presentRentals4);
 
         //Modification of plannedReturnDate or any other date when we change .set....
-        //PresentRentals presentRentalsToBeChange = presentRentalsDao.findById(4);
-        //presentRentalsToBeChange.setPlannedReturnDate(LocalDateTime.of(2020,12,15,18,0,0));
-        //presentRentalsDao.update(presentRentalsToBeChange);
-        //System.out.println(presentRentalsToBeChange);
+//        PresentRentals presentRentalsToBeChange = presentRentalsDao.findById(3);
+//        presentRentalsToBeChange.setPlannedReturnDate(LocalDateTime.of(2020,12,15,18,0,0));
+//        presentRentalsDao.update(presentRentalsToBeChange);
+//        System.out.println(presentRentalsToBeChange);
 
         //Here you can set damages for true or false
-        //Car carToBeModified = carDao.findById(2);
-        //carToBeModified.setDamaged(true);
-        //carDao.update(carToBeModified);
-        //System.out.println(carToBeModified);
+//        Car carToBeModified = carDao.findById(2);
+//        carToBeModified.setDamaged(true);
+//        carDao.update(carToBeModified);
+//        System.out.println(carToBeModified);
 
         //Method in which you show extra fees for late return
-        //System.out.println(presentRentalsDao.lateReturn());
+        //System.out.println(presentRentalsDao.lateReturnAndDamageFees());
 
-        //Showing all cars, customers and present rentals
-        //carDao.findAll().forEach(car -> System.out.println(car.toString()));
-        //customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
-        //presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
-
+//        Showing all cars, customers and present rentals
+//        carDao.findAll().forEach(car -> System.out.println(car.toString()));
+//        customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
+//        presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
 
 
     }
+
 
 }
