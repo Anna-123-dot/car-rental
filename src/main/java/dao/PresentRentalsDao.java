@@ -1,11 +1,9 @@
 package dao;
 
 import database.SessionProvider;
-import model.Car;
 import model.PresentRentals;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
