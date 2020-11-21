@@ -45,15 +45,14 @@ public class MainMenu extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == b1) {
+            carMenu.createAndShowCarMenuGUI();
 
-            carMenu.setVisible(true);
         } else if (e.getSource() == b2) {
-
-            customerMenu.setVisible(true);
+            customerMenu.createAndShowCustomerMenuGUI();
 
         } else {
 
-            presentRentalsMenu.setVisible(true);
+            presentRentalsMenu.createAndShowPresentRentalsMenuGUI();
         }
     }
 

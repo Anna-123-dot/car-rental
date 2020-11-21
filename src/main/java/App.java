@@ -92,6 +92,7 @@ public class App {
 //        customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
 //        presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
 
+        //System.out.println(carDao.allDamagedCarsFees(true));
 
     }
 

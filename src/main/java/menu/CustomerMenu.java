@@ -11,13 +11,14 @@ import java.awt.event.ActionListener;
 public class CustomerMenu extends JFrame {
 
 
-    private static void createAndShowCustomerMenuGUI() {
+    public void createAndShowCustomerMenuGUI() {
         CustomerDao customerDao = new CustomerDao();
-        JFrame f = new JFrame();
+        JFrame f = new JFrame("CUSTOMER MENU");
         Container contentPane = f.getContentPane();
 
         JButton buttonAdd = new JButton("Add customer");
         JButton buttonRemove = new JButton("Remove customer");
+        JButton buttonShowAllCustomers = new JButton("Show all");
 
         JTextField firstName = new JTextField();
         JTextField lastName = new JTextField();
@@ -33,24 +34,38 @@ public class CustomerMenu extends JFrame {
         panelLastName.add(labelLastName, BorderLayout.NORTH);
         panelLastName.add(lastName, BorderLayout.SOUTH);
 
-        JLabel labelCustomerId = new JLabel("Please insert customer first name");
+        JLabel labelCustomerId = new JLabel("Please insert customer id");
         JPanel panelCustomerId = new JPanel(new BorderLayout());
         panelCustomerId.add(labelCustomerId, BorderLayout.PAGE_END);
-        panelCustomerId.add(customerId, BorderLayout.SOUTH);
+        panelCustomerId.add(customerId);
+
+        JPanel panelShowAll = new JPanel();
+        panelShowAll.add(buttonShowAllCustomers);
+
 
 
         buttonAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if (e.getSource() == buttonAdd) {
-                    Customer customer = new Customer(firstName.getText(), lastName.getText());
-                    customerDao.add(customer);
-                } else {
-                    Customer customer = new Customer(firstName.getText(), lastName.getText());
-                    customerDao.remove(customer);
+                Customer customer = new Customer(firstName.getText(), lastName.getText());
+                customerDao.add(customer);
                 }
+
+        });
+        buttonShowAllCustomers.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
             }
+        });
+        buttonRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int id = Integer.parseInt(customerId.getText());
+                Customer customerToBeRemoved = customerDao.findById(id);
+                customerDao.remove(customerToBeRemoved);
+                }
+
         });
 
 
@@ -58,21 +73,17 @@ public class CustomerMenu extends JFrame {
         contentPane.add(buttonRemove);
         contentPane.add(panelFirstName);
         contentPane.add(panelLastName);
+        contentPane.add(panelCustomerId);
+
+        contentPane.add(buttonShowAllCustomers);
 
 
-        f.setLayout(new GridLayout(3, 2));
+        f.setLayout(new FlowLayout(FlowLayout.LEFT));
         f.setVisible(true);
         f.pack();
 
 
     }
 
-    public static void main(String[] args) {
 
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowCustomerMenuGUI();
-            }
-        });
-    }
 }
