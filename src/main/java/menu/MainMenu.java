@@ -5,14 +5,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 
-public class MainMenu extends JPanel implements ActionListener {
-
+public class MainMenu extends JPanel {
 
     protected JButton b1, b2, b3;
-    CarMenu carMenu = new CarMenu();
-    CustomerMenu customerMenu = new CustomerMenu();
-    PresentRentalsMenu presentRentalsMenu = new PresentRentalsMenu();
 
     public MainMenu() {
         b1 = new JButton("Edit car");
@@ -31,31 +28,33 @@ public class MainMenu extends JPanel implements ActionListener {
         b3.setMnemonic(KeyEvent.VK_E);
         b3.setActionCommand("enable");
 
-
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-        b3.addActionListener(this);
-
-
         add(b1);
         add(b2);
         add(b3);
 
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new CarMenu().createAndShowCarMenuGUI();
+            }
+        });
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new CustomerMenu().createAndShowCustomerMenuGUI();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        });
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new PresentRentalsMenu().createAndShowPresentRentalsMenuGUI();
+            }
+        });
     }
-
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == b1) {
-            carMenu.createAndShowCarMenuGUI();
-
-        } else if (e.getSource() == b2) {
-            customerMenu.createAndShowCustomerMenuGUI();
-
-        } else {
-
-            presentRentalsMenu.createAndShowPresentRentalsMenuGUI();
-        }
-    }
-
 
     private static void createAndShowMainMenuGUI() {
 
@@ -65,7 +64,7 @@ public class MainMenu extends JPanel implements ActionListener {
         MainMenu newContentPane = new MainMenu();
 
         frame.setContentPane(newContentPane);
-        frame.getContentPane().add(new JLabel(new ImageIcon("caricon.png")));
+        frame.getContentPane().add(new JLabel(new ImageIcon("car.jpg")));
 
         frame.pack();
         frame.setVisible(true);

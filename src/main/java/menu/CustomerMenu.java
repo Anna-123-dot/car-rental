@@ -2,88 +2,116 @@ package menu;
 
 import dao.CustomerDao;
 import model.Customer;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class CustomerMenu extends JFrame {
 
+    public void createAndShowCustomerMenuGUI() throws SQLException {
 
-    public void createAndShowCustomerMenuGUI() {
         CustomerDao customerDao = new CustomerDao();
-        JFrame f = new JFrame("CUSTOMER MENU");
-        Container contentPane = f.getContentPane();
+        JButton jButton1 = new javax.swing.JButton();
+        JButton jButton2 = new javax.swing.JButton();
+        JButton jButton3 = new javax.swing.JButton();
+        JLabel jLabel1 = new javax.swing.JLabel();
+        JTextField firstName = new javax.swing.JTextField();
+        JTextField lastName = new javax.swing.JTextField();
+        JLabel jLabel2 = new javax.swing.JLabel();
+        JLabel jLabel4 = new javax.swing.JLabel();
+        JTextField customerId = new javax.swing.JTextField();
+        JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
+        JTable jTable1 = new javax.swing.JTable();
 
-        JButton buttonAdd = new JButton("Add customer");
-        JButton buttonRemove = new JButton("Remove customer");
-        JButton buttonShowAllCustomers = new JButton("Show all");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CUSTOMER MENU");
 
-        JTextField firstName = new JTextField();
-        JTextField lastName = new JTextField();
-        JTextField customerId = new JTextField();
-
-        JLabel labelFirstName = new JLabel("Please insert customer first name");
-        JPanel panelFirstName = new JPanel(new BorderLayout());
-        panelFirstName.add(labelFirstName, BorderLayout.NORTH);
-        panelFirstName.add(firstName, BorderLayout.SOUTH);
-
-        JLabel labelLastName = new JLabel("Please insert customer last name");
-        JPanel panelLastName = new JPanel(new BorderLayout());
-        panelLastName.add(labelLastName, BorderLayout.NORTH);
-        panelLastName.add(lastName, BorderLayout.SOUTH);
-
-        JLabel labelCustomerId = new JLabel("Please insert customer id");
-        JPanel panelCustomerId = new JPanel(new BorderLayout());
-        panelCustomerId.add(labelCustomerId, BorderLayout.PAGE_END);
-        panelCustomerId.add(customerId);
-
-        JPanel panelShowAll = new JPanel();
-        panelShowAll.add(buttonShowAllCustomers);
-
-
-
-        buttonAdd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        jButton1.setText("Add customer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Customer customer = new Customer(firstName.getText(), lastName.getText());
                 customerDao.add(customer);
-                }
-
-        });
-        buttonShowAllCustomers.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
+                jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
+                jScrollPane1.setViewportView(jTable1);
             }
         });
-        buttonRemove.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+
+        jButton2.setText("Remove customer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 int id = Integer.parseInt(customerId.getText());
                 Customer customerToBeRemoved = customerDao.findById(id);
                 customerDao.remove(customerToBeRemoved);
-                }
-
+                jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
+                jScrollPane1.setViewportView(jTable1);
+            }
         });
 
+        jButton3.setText("Show all");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
+                jScrollPane1.setViewportView(jTable1);
+            }
+        });
 
-        contentPane.add(buttonAdd);
-        contentPane.add(buttonRemove);
-        contentPane.add(panelFirstName);
-        contentPane.add(panelLastName);
-        contentPane.add(panelCustomerId);
+        jLabel1.setText("Customer first name");
+        jLabel2.setText("Customer last name");
+        jLabel4.setText("Customer id");
 
-        contentPane.add(buttonShowAllCustomers);
+        jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
+        jScrollPane1.setViewportView(jTable1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(79, 79, 79)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(90, 90, 90)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jButton3)
+                                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(customerId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(99, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton1)
+                                        .addComponent(jButton2)
+                                        .addComponent(jButton3))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(customerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(14, Short.MAX_VALUE))
+        );
 
-        f.setLayout(new FlowLayout(FlowLayout.LEFT));
-        f.setVisible(true);
-        f.pack();
-
-
+        pack();
+        setVisible(true);
     }
-
-
 }

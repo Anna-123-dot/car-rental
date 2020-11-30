@@ -1,11 +1,14 @@
 package dao;
 
 import database.SessionProvider;
+import model.Car;
 import model.PresentRentals;
 import org.hibernate.Session;
 
 
+import javax.swing.table.DefaultTableModel;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,4 +56,14 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
         return records;
     }
 
+    public DefaultTableModel allPresentRentalsTable(List<PresentRentals> rentals) {
+
+        List<String[]> values = new ArrayList<>();
+        for (PresentRentals r : rentals) {
+            values.add(new String[]{String.valueOf(r.getId()), String.valueOf(r.getPlannedReturnDate()), String.valueOf(r.getRentalDate()), String.valueOf(r.getReturnDate()), String.valueOf(r.getCar().getId()), String.valueOf(r.getCustomer().getId())});
+        }
+        String[] column = {"Id", "Planned return date", "Rental date", "Return date", "Car id", "Customer id"};
+
+        return new DefaultTableModel(values.toArray(new Object[][]{}), column);
+    }
 }

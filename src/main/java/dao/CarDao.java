@@ -2,8 +2,11 @@ package dao;
 
 import database.SessionProvider;
 import model.Car;
+import model.Customer;
 import org.hibernate.Session;
 
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +31,16 @@ public class CarDao extends AbstractDao<Car> {
 
         session.close();
         return records;
+    }
+    public DefaultTableModel allCarTable(List<Car> cars) {
+
+        List<String[]> values = new ArrayList<>();
+        for (Car car : cars) {
+            values.add(new String[]{String.valueOf(car.getId()), car.getBrand(), car.getModel(), car.getColor(), car.getRegistrationNumber(), String.valueOf(car.isDamaged())});
+        }
+        String[] column = {"Id", "Brand", "Model","Color", "Registration number", "Is damaged?"};
+
+        return new DefaultTableModel(values.toArray(new Object[][]{}), column);
     }
 
 }
