@@ -1,11 +1,8 @@
 package menu;
 
 import javax.swing.*;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.sql.SQLException;
+
 
 public class MainMenu extends JPanel {
 
@@ -32,28 +29,9 @@ public class MainMenu extends JPanel {
         add(b2);
         add(b3);
 
-        b1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new CarMenu().createAndShowCarMenuGUI();
-            }
-        });
-        b2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    new CustomerMenu().createAndShowCustomerMenuGUI();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-        });
-        b3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new PresentRentalsMenu().createAndShowPresentRentalsMenuGUI();
-            }
-        });
+        b1.addActionListener(e -> new CarMenu().createAndShowCarMenuGUI());
+        b2.addActionListener(e -> new CustomerMenu().createAndShowCustomerMenuGUI());
+        b3.addActionListener(e -> new PresentRentalsMenu().createAndShowPresentRentalsMenuGUI());
     }
 
     private static void createAndShowMainMenuGUI() {
@@ -72,11 +50,7 @@ public class MainMenu extends JPanel {
 
     public static void main(String[] args) {
 
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowMainMenuGUI();
-            }
-        });
+        javax.swing.SwingUtilities.invokeLater(MainMenu::createAndShowMainMenuGUI);
     }
 }
 

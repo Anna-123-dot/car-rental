@@ -3,11 +3,10 @@ package menu;
 import dao.CustomerDao;
 import model.Customer;
 import javax.swing.*;
-import java.sql.SQLException;
 
 public class CustomerMenu extends JFrame {
 
-    public void createAndShowCustomerMenuGUI() throws SQLException {
+    public void createAndShowCustomerMenuGUI() {
 
         CustomerDao customerDao = new CustomerDao();
         JButton jButton1 = new javax.swing.JButton();
@@ -26,32 +25,26 @@ public class CustomerMenu extends JFrame {
         setTitle("CUSTOMER MENU");
 
         jButton1.setText("Add customer");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Customer customer = new Customer(firstName.getText(), lastName.getText());
-                customerDao.add(customer);
-                jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
-                jScrollPane1.setViewportView(jTable1);
-            }
+        jButton1.addActionListener(evt -> {
+            Customer customer = new Customer(firstName.getText(), lastName.getText());
+            customerDao.add(customer);
+            jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
+            jScrollPane1.setViewportView(jTable1);
         });
 
         jButton2.setText("Remove customer");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                int id = Integer.parseInt(customerId.getText());
-                Customer customerToBeRemoved = customerDao.findById(id);
-                customerDao.remove(customerToBeRemoved);
-                jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
-                jScrollPane1.setViewportView(jTable1);
-            }
+        jButton2.addActionListener(evt -> {
+            int id = Integer.parseInt(customerId.getText());
+            Customer customerToBeRemoved = customerDao.findById(id);
+            customerDao.remove(customerToBeRemoved);
+            jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
+            jScrollPane1.setViewportView(jTable1);
         });
 
         jButton3.setText("Show all");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
-                jScrollPane1.setViewportView(jTable1);
-            }
+        jButton3.addActionListener(evt -> {
+            jTable1.setModel(new CustomerDao().allCustomerTable(new CustomerDao().findAll()));
+            jScrollPane1.setViewportView(jTable1);
         });
 
         jLabel1.setText("Customer first name");

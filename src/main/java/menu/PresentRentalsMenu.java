@@ -1,7 +1,5 @@
 package menu;
 
-
-import dao.CustomerDao;
 import dao.PresentRentalsDao;
 import javax.swing.*;
 
@@ -37,7 +35,7 @@ public class PresentRentalsMenu extends JFrame {
         jLabel3.setText("Return date");
         jLabel4.setText("Present rental id no");
 
-        jTable1.setModel(new PresentRentalsDao().allPresentRentalsTable(new PresentRentalsDao().findAll()));
+        jTable1.setModel(presentRentalsDao.allPresentRentalsTable(new PresentRentalsDao().findAll()));
         jScrollPane1.setViewportView(jTable1);
 
 

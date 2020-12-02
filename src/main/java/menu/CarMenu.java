@@ -33,31 +33,25 @@ public class CarMenu extends JFrame {
         setTitle("CAR MENU");
 
         jButton1.setText("Add car");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Car newCar = new Car(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), Boolean.parseBoolean(jTextField5.getText()));
-                carDao.add(newCar);
-                jTable2.setModel(new CarDao().allCarTable(( new CarDao().findAll() )));
-                jScrollPane2.setViewportView(jTable2);
-            }
+        jButton1.addActionListener(evt -> {
+            Car newCar = new Car(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), Boolean.parseBoolean(jTextField5.getText()));
+            carDao.add(newCar);
+            jTable2.setModel(new CarDao().allCarTable(( new CarDao().findAll() )));
+            jScrollPane2.setViewportView(jTable2);
         });
 
         jButton2.setText("Remove car");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Car carToBeRemoved = carDao.findById(Integer.parseInt(jTextField6.getText()));
-                carDao.remove(carToBeRemoved);
-                jTable2.setModel(new CarDao().allCarTable(( new CarDao().findAll() )));
-                jScrollPane2.setViewportView(jTable2);
-            }
+        jButton2.addActionListener(evt -> {
+            Car carToBeRemoved = carDao.findById(Integer.parseInt(jTextField6.getText()));
+            carDao.remove(carToBeRemoved);
+            jTable2.setModel(new CarDao().allCarTable(( new CarDao().findAll() )));
+            jScrollPane2.setViewportView(jTable2);
         });
 
         jButton3.setText("Show all");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTable2.setModel(new CarDao().allCarTable(( new CarDao().findAll() )));
-                jScrollPane2.setViewportView(jTable2);
-            }
+        jButton3.addActionListener(evt -> {
+            jTable2.setModel(new CarDao().allCarTable(( new CarDao().findAll() )));
+            jScrollPane2.setViewportView(jTable2);
         });
 
         jLabel1.setText("Car brand");

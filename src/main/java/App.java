@@ -4,11 +4,11 @@ import dao.PresentRentalsDao;
 import model.Car;
 import model.Customer;
 import model.PresentRentals;
-import org.hibernate.Session;
+;
 
 
 import java.time.LocalDateTime;
-import java.util.TimeZone;
+
 
 
 public class App {

@@ -1,7 +1,6 @@
 package dao;
 
 import database.SessionProvider;
-import model.Car;
 import model.PresentRentals;
 import org.hibernate.Session;
 
