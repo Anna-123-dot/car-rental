@@ -3,6 +3,7 @@ package model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -18,13 +19,13 @@ public class PresentRentals {
     private int id;
 
     @Column(name = "rental_date")
-    private LocalDateTime rentalDate;
+    private LocalDate rentalDate;
 
     @Column(name = "planned_return_date")
-    private LocalDateTime plannedReturnDate;
+    private LocalDate plannedReturnDate;
 
     @Column(name = "return_date")
-    private LocalDateTime returnDate;
+    private LocalDate returnDate;
 
     @ManyToOne(targetEntity = Car.class)
     private Car car;
@@ -35,7 +36,7 @@ public class PresentRentals {
     public PresentRentals() {
     }
 
-    public PresentRentals(LocalDateTime rentalDate, LocalDateTime plannedReturnDate, LocalDateTime returnDate, Car car, Customer customer) {
+    public PresentRentals(LocalDate rentalDate, LocalDate plannedReturnDate, LocalDate returnDate, Car car, Customer customer) {
         this.rentalDate = rentalDate;
         this.plannedReturnDate = plannedReturnDate;
         this.returnDate = returnDate;
@@ -52,27 +53,27 @@ public class PresentRentals {
         this.id = id;
     }
 
-    public LocalDateTime getRentalDate() {
+    public LocalDate getRentalDate() {
         return rentalDate;
     }
 
-    public void setRentalDate(LocalDateTime rentalDate) {
+    public void setRentalDate(LocalDate rentalDate) {
         this.rentalDate = rentalDate;
     }
 
-    public LocalDateTime getPlannedReturnDate() {
+    public LocalDate getPlannedReturnDate() {
         return plannedReturnDate;
     }
 
-    public void setPlannedReturnDate(LocalDateTime plannedReturnDate) {
+    public void setPlannedReturnDate(LocalDate plannedReturnDate) {
         this.plannedReturnDate = plannedReturnDate;
     }
 
-    public LocalDateTime getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(LocalDateTime returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 

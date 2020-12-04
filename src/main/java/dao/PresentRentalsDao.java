@@ -65,4 +65,5 @@ public class PresentRentalsDao extends AbstractDao<PresentRentals> {
 
         return new DefaultTableModel(values.toArray(new Object[][]{}), column);
     }
+
 }

@@ -7,6 +7,7 @@ import model.PresentRentals;
 ;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -57,14 +58,14 @@ public class App {
         //Customer customerToBeRemoved = customerDao.findById(1);
         //customerDao.remove(customerToBeRemoved);
 
-        PresentRentals presentRentals1 = new PresentRentals(LocalDateTime.of(2020, 10, 10, 10, 0, 0),
-                LocalDateTime.of(2020, 10, 12, 10, 0, 0), LocalDateTime.of(2020, 10, 14, 14, 15, 0), carDao.findById(1), customerDao.findById(3));
-        PresentRentals presentRentals2 = new PresentRentals(LocalDateTime.of(2020, 10, 20, 10, 0, 0),
-                LocalDateTime.of(2020, 10, 30, 12, 0, 0), LocalDateTime.of(2020, 10, 30, 11, 0, 0), carDao.findById(2), customerDao.findById(2));
-        PresentRentals presentRentals3 = new PresentRentals(LocalDateTime.of(2020, 10, 30, 8, 0, 0),
-                LocalDateTime.of(2020, 11, 3, 23, 0, 0), LocalDateTime.of(2020, 11, 2, 23, 59, 0), carDao.findById(5), customerDao.findById(5));
-        PresentRentals presentRentals4 = new PresentRentals(LocalDateTime.of(2020, 11, 2, 9, 20, 0), LocalDateTime.of(2020, 11, 3, 22, 0, 0),
-                LocalDateTime.of(2020, 11, 25, 15, 0, 0), carDao.findById(3), customerDao.findById(5));
+        PresentRentals presentRentals1 = new PresentRentals(LocalDate.of(2020, 10, 10),
+                LocalDate.of(2020, 10, 12), LocalDate.of(2020, 10, 14), carDao.findById(1), customerDao.findById(3));
+        PresentRentals presentRentals2 = new PresentRentals(LocalDate.of(2020, 10, 20),
+                LocalDate.of(2020, 10, 30), LocalDate.of(2020, 10, 30), carDao.findById(2), customerDao.findById(2));
+        PresentRentals presentRentals3 = new PresentRentals(LocalDate.of(2020, 10, 30),
+                LocalDate.of(2020, 11, 3), LocalDate.of(2020, 11, 2), carDao.findById(5), customerDao.findById(5));
+        PresentRentals presentRentals4 = new PresentRentals(LocalDate.of(2020, 11, 2), LocalDate.of(2020, 11, 3),
+                LocalDate.of(2020, 11, 25), carDao.findById(3), customerDao.findById(5));
 
         //Adding new rental agreement
 //        presentRentalsDao.add(presentRentals1);

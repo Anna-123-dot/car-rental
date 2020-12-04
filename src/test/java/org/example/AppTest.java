@@ -8,6 +8,7 @@ import model.PresentRentals;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
@@ -46,10 +47,10 @@ public class AppTest {
         PresentRentalsDao presentRentalsDao = new PresentRentalsDao();
         PresentRentals presentRentalsToBeChange = presentRentalsDao.findById(1);
         //when
-        presentRentalsToBeChange.setPlannedReturnDate(LocalDateTime.of(2021, 1, 1, 15, 0, 0));
+        presentRentalsToBeChange.setPlannedReturnDate(LocalDate.of(2021, 1, 1));
         presentRentalsDao.update(presentRentalsToBeChange);
         //then
-        assertEquals(LocalDateTime.of(2021, 1, 1, 15, 0, 0), presentRentalsDao.findById(1).getPlannedReturnDate());
+        assertEquals(LocalDate.of(2021, 1, 1), presentRentalsDao.findById(1).getPlannedReturnDate());
 
     }
 
