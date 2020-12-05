@@ -2,7 +2,6 @@ package dao;
 
 import database.SessionProvider;
 import model.Car;
-import model.Customer;
 import org.hibernate.Session;
 
 import javax.swing.table.DefaultTableModel;

@@ -9,19 +9,19 @@ public class MainMenu extends JPanel {
     protected JButton b1, b2, b3;
 
     public MainMenu() {
-        b1 = new JButton("Edit car");
+        b1 = new JButton("Car");
         b1.setVerticalTextPosition(AbstractButton.CENTER);
         b1.setHorizontalTextPosition(AbstractButton.LEADING);
         b1.setMnemonic(KeyEvent.VK_D);
         b1.setActionCommand("enable");
 
-        b2 = new JButton("Edit customer");
+        b2 = new JButton("Customer");
         b2.setVerticalTextPosition(AbstractButton.BOTTOM);
         b2.setHorizontalTextPosition(AbstractButton.CENTER);
         b2.setMnemonic(KeyEvent.VK_M);
         b2.setActionCommand("enable");
 
-        b3 = new JButton("Edit present rentals");
+        b3 = new JButton("Present rentals");
         b3.setMnemonic(KeyEvent.VK_E);
         b3.setActionCommand("enable");
 

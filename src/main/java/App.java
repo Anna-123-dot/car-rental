@@ -4,16 +4,9 @@ import dao.PresentRentalsDao;
 import model.Car;
 import model.Customer;
 import model.PresentRentals;
-;
-
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-
 
 public class App {
-
 
     public static void main(String[] args) {
         CarDao carDao = new CarDao();
@@ -96,6 +89,4 @@ public class App {
         //System.out.println(carDao.allDamagedCarsFees(true));
 
     }
-
-
 }

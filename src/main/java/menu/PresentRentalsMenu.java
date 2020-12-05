@@ -5,22 +5,19 @@ import dao.CarDao;
 import dao.CustomerDao;
 import dao.PresentRentalsDao;
 import date.DateConversion;
-import model.Car;
-import model.Customer;
 import model.PresentRentals;
 
 import javax.swing.*;
-import java.time.LocalDate;
+
 
 public class PresentRentalsMenu extends JFrame {
 
+    @SuppressWarnings("ConstantConditions")
     public void createAndShowPresentRentalsMenuGUI() {
 
         PresentRentalsDao presentRentalsDao = new PresentRentalsDao();
         CustomerDao customerDao = new CustomerDao();
         CarDao carDao = new CarDao();
-        PresentRentals presentRentals = new PresentRentals();
-        DateConversion dateConversion = new DateConversion();
         JButton jButton1 = new javax.swing.JButton();
         JButton jButton2 = new javax.swing.JButton();
         JButton jButton3 = new javax.swing.JButton();
@@ -57,7 +54,7 @@ public class PresentRentalsMenu extends JFrame {
 
         });
         jComboBox2.addActionListener(evt -> {
-            Integer chosenCustomer = (Integer) jComboBox2.getSelectedItem();
+
         });
 
 
