@@ -1,9 +1,10 @@
 import dao.CarDao;
+import dao.CarSegmentClassDao;
 import dao.CustomerDao;
 import dao.PresentRentalsDao;
-import model.Car;
-import model.Customer;
-import model.PresentRentals;
+import model.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class App {
@@ -12,6 +13,8 @@ public class App {
         CarDao carDao = new CarDao();
         CustomerDao customerDao = new CustomerDao();
         PresentRentalsDao presentRentalsDao = new PresentRentalsDao();
+        CarSegmentClassDao carSegmentClassDao = new CarSegmentClassDao();
+        PriceLogic priceLogic = new PriceLogic();
 
         Car car1 = new Car("Toyota", "Yaris", "grey", "GD12345", false);
         Car car2 = new Car("Ford", "Fiesta", "red", "GD12346", false);
@@ -20,7 +23,7 @@ public class App {
         Car car5 = new Car("Honda", "Civic", "blue", "GD12349", false);
         Car car6 = new Car("Opel", "Insignia", "black", "GD12350", false);
 
-        //Adding new car
+       // Adding new car
 //        carDao.add(car1);
 //        carDao.add(car2);
 //        carDao.add(car3);
@@ -51,17 +54,16 @@ public class App {
         //Customer customerToBeRemoved = customerDao.findById(1);
         //customerDao.remove(customerToBeRemoved);
 
-        PresentRentals presentRentals1 = new PresentRentals(LocalDate.of(2020, 10, 10),
-                LocalDate.of(2020, 10, 12), LocalDate.of(2020, 10, 14), carDao.findById(1), customerDao.findById(3));
-        PresentRentals presentRentals2 = new PresentRentals(LocalDate.of(2020, 10, 20),
-                LocalDate.of(2020, 10, 30), LocalDate.of(2020, 10, 30), carDao.findById(2), customerDao.findById(2));
-        PresentRentals presentRentals3 = new PresentRentals(LocalDate.of(2020, 10, 30),
-                LocalDate.of(2020, 11, 3), LocalDate.of(2020, 11, 2), carDao.findById(5), customerDao.findById(5));
-        PresentRentals presentRentals4 = new PresentRentals(LocalDate.of(2020, 11, 2), LocalDate.of(2020, 11, 3),
-                LocalDate.of(2020, 11, 25), carDao.findById(3), customerDao.findById(5));
+
+//        PresentRentals presentRentals1 = new PresentRentals(LocalDate.of(2020, 10, 20),
+//                LocalDate.of(2020, 10, 30), LocalDate.of(2020, 10, 30), BigDecimal.valueOf(160.0),BigDecimal.valueOf(0.0),BigDecimal.valueOf(160.0), RentStatus.FINISHED, carDao.findById(1), customerDao.findById(1));
+//        PresentRentals presentRentals3 = new PresentRentals(LocalDate.of(2020, 10, 30),
+//                LocalDate.of(2020, 11, 3), LocalDate.of(2020, 11, 2), carDao.findById(5), customerDao.findById(5));
+//        PresentRentals presentRentals4 = new PresentRentals(LocalDate.of(2020, 11, 2), LocalDate.of(2020, 11, 3),
+//                LocalDate.of(2020, 11, 25), carDao.findById(3), customerDao.findById(5));
 
         //Adding new rental agreement
-//        presentRentalsDao.add(presentRentals1);
+//       presentRentalsDao.add(presentRentals1);
 //        presentRentalsDao.add(presentRentals2);
 //        presentRentalsDao.add(presentRentals3);
 //        presentRentalsDao.add(presentRentals4);
@@ -84,9 +86,9 @@ public class App {
 //        Showing all cars, customers and present rentals
 //        carDao.findAll().forEach(car -> System.out.println(car.toString()));
 //        customerDao.findAll().forEach(customer -> System.out.println(customer.toString()));
-//        presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
+ //      presentRentalsDao.findAll().forEach(presentRentals -> System.out.println(presentRentals.toString()));
 
         //System.out.println(carDao.allDamagedCarsFees(true));
-
+presentRentalsDao.allDamagedCarsChargedAdditionalFee();
     }
 }

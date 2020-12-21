@@ -18,19 +18,19 @@ public class CarDao extends AbstractDao<Car> {
 
     }
 
-    public List<Car> allDamagedCarsFees(boolean isDamaged) {
-        Session session = SessionProvider.getSession();
-        List<Car> records = session.createQuery("from Car as c where c.isDamaged=:isDamaged", Car.class)
-                .setParameter("isDamaged", isDamaged)
-                .stream().filter(e -> {
-                    System.out.println("Za uszkodzenia samochodu naliczono dodatkową opłatę w wysokości 500 PLN");
-                    return isDamaged;
-                })
-                .collect(Collectors.toList());
-
-        session.close();
-        return records;
-    }
+//    public List<Car> allDamagedCarsFees(boolean isDamaged) {
+//        Session session = SessionProvider.getSession();
+//        List<Car> records = session.createQuery("from Car as c where c.isDamaged=:isDamaged", Car.class)
+//                .setParameter("isDamaged", isDamaged)
+//                .stream().filter(e -> {
+//                    System.out.println("Za uszkodzenia samochodu naliczono dodatkową opłatę w wysokości 500 PLN");
+//                    return isDamaged;
+//                })
+//                .collect(Collectors.toList());
+//
+//        session.close();
+//        return records;
+//    }
     public DefaultTableModel allCarTable(List<Car> cars) {
 
         List<String[]> values = new ArrayList<>();

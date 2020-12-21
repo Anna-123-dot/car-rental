@@ -66,8 +66,8 @@ public class PresentRentalsMenu extends JFrame {
 
             int chosenCar = (int) jComboBox1.getSelectedItem();
             int chosenCustomer = (int) jComboBox2.getSelectedItem();
-            PresentRentals newPresentRental = new PresentRentals(DateConversion.convertToLocalDate(jDateChooserRentalDate.getDate()), DateConversion.convertToLocalDate(jDateChooserPlannedReturnDate.getDate()), DateConversion.convertToLocalDate(jDateChooserReturnDate.getDate()), carDao.findById(chosenCar), customerDao.findById(chosenCustomer));
-            presentRentalsDao.add(newPresentRental);
+            //PresentRentals newPresentRental = new PresentRentals(DateConversion.convertToLocalDate(jDateChooserRentalDate.getDate()), DateConversion.convertToLocalDate(jDateChooserPlannedReturnDate.getDate()), DateConversion.convertToLocalDate(jDateChooserReturnDate.getDate()), carDao.findById(chosenCar), customerDao.findById(chosenCustomer));
+            //presentRentalsDao.add(newPresentRental);
             jTablePresentRentals.setModel(presentRentalsDao.allPresentRentalsTable(new PresentRentalsDao().findAll()));
             jScrollPane1.setViewportView(jTablePresentRentals);
         });
@@ -107,7 +107,7 @@ public class PresentRentalsMenu extends JFrame {
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
+                                .addGap(264, 264, 264)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -164,7 +164,7 @@ public class PresentRentalsMenu extends JFrame {
                                                 .addGap(201, 201, 201)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jScrollPane3)
-                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
